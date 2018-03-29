@@ -11,7 +11,7 @@ module.exports ={
     entry:"./src",
    // output:output,
     mode:"development",
-     devtool:"source-map",
+    devtool:"eval-source-map",
     module:modules,
     plugins:[
         new htmlWebpackPlugin({
