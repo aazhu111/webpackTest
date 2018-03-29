@@ -3,9 +3,11 @@ import React, {Component} from 'react'
 class Greeter extends Component{
   render() {
     return (
-      <div>
-        123
-      </div>
+      <ul>
+        <li>第一行</li>
+        <li>第二行</li>
+        <li>第三行</li>
+      </ul>
     );
   }
 }
