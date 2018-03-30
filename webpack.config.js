@@ -13,6 +13,14 @@ module.exports ={
     mode:"development",
     devtool:"eval-source-map",
     module:modules,
+    devServer: {
+        contentBase: "./dist",//本地服务器所加载的页面所在的目录
+        historyApiFallback: true,//不跳转
+        disableHostCheck: true,
+        host:"192.168.6.79",
+        port:"4000",
+        inline: true//实时刷新
+     }, 
     plugins:[
         new htmlWebpackPlugin({
             filename:"index.html",
