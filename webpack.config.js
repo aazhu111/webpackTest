@@ -6,12 +6,13 @@ const plugins = require('./config/plugins');
 const modules = require('./config/module');
 const htmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin =require('clean-webpack-plugin')
+require("babel-polyfill");
 
 module.exports ={
-    entry:"./src",
+    entry:["babel-polyfill","./src"],
    // output:output,
     mode:"development",
-    devtool:"eval-source-map",
+    // devtool:"eval-source-map",
     module:modules,
     devServer: {
         contentBase: "./dist",//本地服务器所加载的页面所在的目录
