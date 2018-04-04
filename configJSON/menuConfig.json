@@ -1,0 +1,20 @@
+[
+    {
+        "menu":["嘻嘻","option2","option3","option4"],
+        "Icon":"user",
+        "subName":"欢迎界面",
+        "key":"sub1"
+    },
+    {
+      "menu":["option5","option6","option7","option8"],
+      "Icon":"laptop",
+      "subName":"技术博客",
+      "key":"sub2"
+    },
+    {
+      "menu":["option9","option10","option11","option12"],
+      "Icon":"notification",
+      "subName":"论坛",
+      "key":"sub3"
+    }
+]
