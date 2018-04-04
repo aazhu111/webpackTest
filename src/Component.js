@@ -1,13 +1,14 @@
-import React, {Component} from 'react';
-import { AutoComplete,Carousel} from 'antd';
+import React from 'react';
+import menuConfig from '../configJSON/menuConfig.json';//导入菜单项配置文件
 import 'antd/dist/antd.css';
-// import './css/Component.less';
+import './css/Component.less';
+import {HTBlog_createMenu as createMenu} from './common/createComponent.js';
+import {Layout, Menu, Breadcrumb, Icon,Button} from 'antd';
+const {Component} = React;
+const { SubMenu } = Menu;
+const { Header, Content, Sider,Footer } = Layout;
+const subMenu = menuConfig;
 const dataSource = ['12345', '23456', '34567'];
-const fetchOptions = {
-  method:"get",
-  mode:"cors",
-
-}
 const ButtonCommonStyle = {
   "vertical-align":"middle"
 }
@@ -19,26 +20,6 @@ class Banner extends Component {
         return <div key={index}><h2>{ele}</h2></div>
       })}
     </Carousel>
-  }
-}
-// 按钮
-class Button extends Component{
-  constructor(props){
-    super(props);
-    this.state = {
-      isToggleOn : true,
-    }
-    this.handleClick = this.handleClick.bind(this);
-  }
-  handleClick(){
-    this.setState((preState) =>{
-      return {
-        isToggleOn:!preState.isToggleOn
-      }
-    })
-  }
-  render(){
-    return <button style={{ButtonCommonStyle}} onClick={this.handleClick}>{this.state.isToggleOn?"ON":"OFF"}</button>
   }
 }
 // 时钟组件
@@ -80,31 +61,67 @@ class Clock extends Component{
     return (
     <React.Fragment>
     <span>clock:<a style={{color:this.state.color}}>{this.state.date.toLocaleTimeString()}</a></span>
-    <Button />
+    <Button icon="search">search</Button>
     </React.Fragment>
   );
   }
 }
-const liEleArray = ["第一行","第二行",<Clock />,<AutoComplete dataSource={dataSource} />,<Banner />]
-const LiListArray = liEleArray.map((ele,index) =>{
-  return <li key={index}>{ele}</li>
-})
-function LiComponent () {
-  return <React.Fragment>
-      {LiListArray}
-     </React.Fragment>
-}
-
 // 容器组件
 class Greeter extends Component{
+  constructor(props){
+    super(props);
+    this.state = {
+      handleClick : this.handleClick.bind(this)
+    }
+  }
+  createMenu(ele){
+      
+  }
+  handleClick(){
+    alert(this,key);
+  }
   render() {
     return (
-      <ul>
-        {/* <li>第一行</li>
-        <li>第二行</li>
-        <li> clock:<Clock /></li> */}
-        <LiComponent />
-      </ul>
+    <Layout>
+      <Header className="header">
+        <div className="logo" />
+        <Menu
+          theme="dark"
+          mode="horizontal"
+          defaultSelectedKeys={['2']}
+          style={{ lineHeight: '64px' }}
+        >
+          <Menu.Item key="1">首页</Menu.Item>
+          <Menu.Item key="2">导航</Menu.Item>
+          <Menu.Item key="3">帮助</Menu.Item>
+        </Menu>
+      </Header>
+    <Layout>
+      <Sider width={200} style={{ background: '#fff' }}>
+        <Menu
+          mode="inline"
+          defaultSelectedKeys={['1']}
+          defaultOpenKeys={['sub1']}
+          style={{ height: '100%', borderRight: 0 }}
+        >
+         {createMenu(subMenu)}
+        </Menu>
+      </Sider>
+      <Layout style={{ padding: '0 24px 24px' }}>
+        <Breadcrumb style={{ margin: '16px 0' }}>
+          <Breadcrumb.Item>Home</Breadcrumb.Item>
+          <Breadcrumb.Item>List</Breadcrumb.Item>
+          <Breadcrumb.Item>App</Breadcrumb.Item>
+        </Breadcrumb>
+        <Content style={{ background: '#fff', padding: 24, margin: 0, minHeight: 280 }}>
+          <Clock />
+        </Content>
+        <Footer style={{ textAlign: 'center' }}>
+        HTBlog ©2016 Created by 豪~
+      </Footer>
+      </Layout>
+    </Layout>
+  </Layout>
     );
   }
 }
