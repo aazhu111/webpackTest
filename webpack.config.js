@@ -11,28 +11,40 @@ require("babel-polyfill");
 module.exports ={
     entry:["babel-polyfill","./src"],
    // output:output,
-    mode:"development",
+    mode:"production",
     // devtool:"eval-source-map",
     module:modules,
     devServer: {
         contentBase: "./dist",//本地服务器所加载的页面所在的目录
         historyApiFallback: true,//不跳转
         disableHostCheck: true,
-        host:"192.168.6.79",
-        port:"4000",
+        host:"127.0.0.1",
+        port:"80",
         inline: true//实时刷新
      }, 
     plugins:[
         new htmlWebpackPlugin({
             filename:"index.html",
             template: "src/index.html",
-             chunks:"main"
+            chunks:"main",
+            minify: {    
+                collapseWhitespace: false,    
+                removeComments: true    
+           }   
         }),
         new CleanWebpackPlugin('./dist/*.*', {
             root: __dirname,
             verbose: true,
             dry: false
-        })
-    
+        }),
+        new webpack.optimize.SplitChunksPlugin({
+            chunks: "main",
+            minSize: 20000,
+            minChunks: 1,
+            maxAsyncRequests: 5,
+            maxInitialRequests: 3,
+            name: true
+        }),
+        new webpack.optimize.ModuleConcatenationPlugin()
     ],
 }
