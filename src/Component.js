@@ -71,14 +71,14 @@ class Greeter extends Component{
   constructor(props){
     super(props);
     this.state = {
-      handleClick : this.handleClick.bind(this)
+      handleClick:this.handleClick.bind(this)
     }
   }
   createMenu(ele){
       
   }
   handleClick(){
-    alert(this,key);
+    alert("触发点击事件")
   }
   render() {
     return (
@@ -91,7 +91,7 @@ class Greeter extends Component{
           defaultSelectedKeys={['2']}
           style={{ lineHeight: '64px' }}
         >
-          <Menu.Item key="1">首页</Menu.Item>
+          <Menu.Item key="1" onClick={(e) => this.handleClick(this)}><span >首页</span></Menu.Item>
           <Menu.Item key="2">导航</Menu.Item>
           <Menu.Item key="3">帮助</Menu.Item>
         </Menu>
@@ -105,7 +105,7 @@ class Greeter extends Component{
           style={{ height: '100%', borderRight: 0 }}
         >
          {createMenu(subMenu)}
-        </Menu>
+         </Menu>
       </Sider>
       <Layout style={{ padding: '0 24px 24px' }}>
         <Breadcrumb style={{ margin: '16px 0' }}>

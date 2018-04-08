@@ -12,7 +12,7 @@ module.exports ={
     entry:["babel-polyfill","./src"],
    // output:output,
     mode:"production",
-    // devtool:"eval-source-map",
+    devtool:"eval-source-map",
     module:modules,
     devServer: {
         contentBase: "./dist",//本地服务器所加载的页面所在的目录

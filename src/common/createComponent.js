@@ -1,10 +1,10 @@
 import React from 'react';
-import { Menu} from 'antd';
+import { Menu,Icon} from 'antd';
 const { SubMenu } = Menu;
 
-function createMenu(subMenu){
+function createMenu(subMenu,handleClick){
     return subMenu.map((ele) =>{
-        return (<SubMenu key={ele.key} title={<span><Icon type={ele.Icon} />{ele.subName}</span>}>
+        return (<SubMenu key={ele.key}  title={<span><Icon type={ele.Icon} />{ele.subName}</span>}>
             {
               ele.menu.map((ele,index) => {
                 return <Menu.Item key={index}>{ele}</Menu.Item>
