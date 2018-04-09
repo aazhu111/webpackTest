@@ -11,7 +11,7 @@ require("babel-polyfill");
 module.exports ={
     entry:["babel-polyfill","./src"],
    // output:output,
-    mode:"production",
+    mode:"development",
     devtool:"eval-source-map",
     module:modules,
     devServer: {
@@ -20,7 +20,8 @@ module.exports ={
         disableHostCheck: true,
         host:"127.0.0.1",
         port:"80",
-        inline: true//实时刷新
+       // inline: true//实时刷新
+       hot:true
      }, 
     plugins:[
         new htmlWebpackPlugin({
@@ -45,6 +46,7 @@ module.exports ={
             maxInitialRequests: 3,
             name: true
         }),
-        new webpack.optimize.ModuleConcatenationPlugin()
+        new webpack.optimize.ModuleConcatenationPlugin(),
+        new webpack.HotModuleReplacementPlugin()
     ],
 }

@@ -3,7 +3,7 @@ import menuConfig from '../configJSON/menuConfig.json';//导入菜单项配置�
 import 'antd/dist/antd.css';
 import './css/Component.less';
 import {HTBlog_createMenu as createMenu} from './common/createComponent.js';
-import {Layout, Menu, Breadcrumb, Icon,Button} from 'antd';
+import {Layout, Menu, Breadcrumb, Icon,Button,Carousel} from 'antd';
 const {Component} = React;
 const { SubMenu } = Menu;
 const { Header, Content, Sider,Footer } = Layout;
@@ -114,10 +114,10 @@ class Greeter extends Component{
           <Breadcrumb.Item>App</Breadcrumb.Item>
         </Breadcrumb>
         <Content style={{ background: '#fff', padding: 24, margin: 0, minHeight: 280 }}>
-          <Clock />
+         {this.props.children}
         </Content>
         <Footer style={{ textAlign: 'center' }}>
-        HTBlog ©2016 Created by 豪~
+        HTBlog ©2016 Created by H
       </Footer>
       </Layout>
     </Layout>
@@ -127,3 +127,5 @@ class Greeter extends Component{
 }
 
 export default Greeter
+exports.Clock = Clock;
+exports.Banner = Banner
