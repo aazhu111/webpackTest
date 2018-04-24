@@ -1,13 +1,14 @@
 {
-  "name": "webpacktest",
+  "name": "webpacktest", 
   "version": "0.0.0",
   "description": "to test react-git",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack --watch",
-    "server": "webpack-dev-server --open"
-  },
+    "server": "webpack-dev-server --open",
+    "server1": "webpack-dev-server --open"
+  }, 
   "author": "",
   "license": "ISC",
   "dependencies": {
